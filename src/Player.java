@@ -3,11 +3,18 @@ public class Player {
     public boolean isDealer;
 
     //sum of cards
-    public int SumOfCards;
+    public int cardsSum;
 
     //is bust
     public boolean isBust;
 
     //the players cards
     public Card[] hand;
+
+    public Player(){
+
+    }
+    public void print(){
+
+    }
 }
