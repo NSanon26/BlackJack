@@ -12,9 +12,17 @@ public class Player {
     public Card[] hand;
 
     public Player(){
+        //make is Dealer random
+        if(cardsSum > 21){
+            isBust = true;
+        }
+        if(cardsSum < 21){
+            isBust = false;
+        }
 
     }
     public void print(){
+        System.out.println("It is "+isDealer+" that you are the dealer. Your cards add up to "+cardsSum+" which means it is"+isBust+" that you busted");
 
     }
 }
