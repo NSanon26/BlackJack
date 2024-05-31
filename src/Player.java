@@ -11,18 +11,24 @@ public class Player {
     //the players cards
     public Card[] hand;
 
-    public Player(){
-        //make is Dealer random
-        if(cardsSum > 21){
-            isBust = true;
-        }
-        if(cardsSum < 21){
-            isBust = false;
-        }
+    public Player(boolean pIsDealer, int pCardsSum, boolean pIsBust){
+        isDealer = pIsDealer;
+        cardsSum = pCardsSum;
+        isBust = pIsBust;
+        hand = new Card[2];
 
     }
     public void print(){
-        System.out.println("It is "+isDealer+" that you are the dealer. Your cards add up to "+cardsSum+" which means it is"+isBust+" that you busted");
+        if(isDealer == false) {
+            System.out.println("The player has " + cardsSum + " points");
+        }else{
+            System.out.println("The dealer has "+cardsSum+" points");
+        }
+
+        for(int i = 0; i<hand.length; i++){
+            hand[i].print();
+        }
+
 
     }
 }
