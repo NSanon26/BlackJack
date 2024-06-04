@@ -4,6 +4,8 @@ public class Casino {
     public Player Nemo;
     public Player Dealer;
     public Card[] deck;
+    public int hand = 3;
+    public int deck2 = 4;
     public static void main(String[] args) {
         Casino x = new Casino();
 
@@ -24,7 +26,7 @@ for(int j = 0; j<4; j++) {
     }
 }
 shuffle();
-printDeck();
+//printDeck();
 
 
 Nemo = new Player(false, 0, false);
@@ -41,19 +43,8 @@ Dealer = new Player(true, 0, false);
     if(Nemo.cardsSum == 21){
         System.out.println("You got Black Jack! You win");
     }
-//https://www.w3schools.com/java/java_user_input.asp MY SOURCE
-    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
-    System.out.println("Would you like to hit or stand? Please Respond 'hit' or 'stand'");
+    ask();
 
-    String userName = myObj.nextLine();  // Read user input
-    System.out.println("You chose to: " + userName);  // Output user input
-    if(userName.equals( "hit")){
-        System.out.println("the hit code");
-        Nemo.hand[].length++;
-        Nemo.hand[2] = deck[4];
-        Nemo.cardsSum = Nemo.cardsSum + Nemo.hand[2].value;
-        System.out.println(Nemo.cardsSum);
-    }
 
 
 
@@ -92,6 +83,31 @@ Dealer = new Player(true, 0, false);
            deck[esme] = temp;
 
        }
+    }
+    public void ask(){
+        //https://www.w3schools.com/java/java_user_input.asp MY SOURCE
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Would you like to hit or stand? Please Respond 'hit' or 'stand'");
+
+        String userName = myObj.nextLine();  // Read user input
+        System.out.println("You chose to: " + userName);  // Output user input
+        if(userName.equals("hit")) {
+            Card[] newArray = new Card[Nemo.hand.length + 1];
+            for (int i = 0; i < newArray.length - 1; i++) {
+                newArray[i] = Nemo.hand[i];
+            }
+            newArray[newArray.length - 1] = deck[deck2];
+            Nemo.hand = newArray;
+
+            Nemo.cardsSum += deck[deck2].value;
+            hand++;
+            deck2++;
+            Nemo.print();
+        }
+        if(Nemo.cardsSum >21){
+            System.out.print("you lost!");
+        }
+
     }
 }
 
